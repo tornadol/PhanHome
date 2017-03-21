@@ -1,0 +1,93 @@
+﻿@using System.Configuration
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{
+    <link rel="stylesheet" type="text/css" href="~/Content/css/pay.min.css" />
+}
+@section JsPath{
+    <script type="text/javascript" src="~/scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="~/scripts/pay.js"></script>
+}
+<div class="container wrapper">
+    <div class="row cart-body">
+        <div class="form-horizontal">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
+                <!--REVIEW ORDER-->
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Thông tin đơn hàng<div class="pull-right"></div>
+                    </div>
+                    <div class="panel-body" id="info-cart">
+                    </div>
+                </div>
+                <!--REVIEW ORDER END-->
+            </div>
+        </div>
+        <form class="form-horizontal" method="post" action="">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
+                <!--SHIPPING METHOD-->
+                <div class="panel panel-info">
+                    <div class="panel-heading">Đặt hàng</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <h4>Thông tin đặt hàng</h4>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-xs-12">
+                                <strong>Tên:</strong>
+                                <input type="text" name="name" class="form-control" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12"><strong>Email Address:</strong></div>
+                            <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12"><strong>Địa chỉ:</strong></div>
+                            <div class="col-md-12">
+                                <input type="text" name="address" class="form-control" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12"><strong>Số điện thoại:</strong></div>
+                            <div class="col-md-12"><input type="text" name="phone" class="form-control" value="" /></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12"><strong>Ghi chú:</strong></div>
+                            <div class="col-md-12">
+                                <textarea type="text" name="des" class="form-control" value="" rows="3" style="line-height: 18px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <a onclick="SubmitForm()" class="btn btn-primary btn-submit-fix">Đặt hàng</a>
+                            </div>
+                        </div>
+                        <div class="lblerr wn"></div>
+                    </div>
+                </div>
+                <!--SHIPPING METHOD END-->
+            </div>
+        </form>
+    </div>
+    <div class="row cart-footer">
+
+    </div>
+</div>
+<div id="cboxOverlay" style="display:none"></div>
+<div id="pay-preloader" clas="row" style="display:none">
+    <div id="preload">
+        <div class="col-lg-4 col-sm-4 col-sm-4 col-xs-4">
+            <div class="loader"></div>
+        </div>
+        <div class="col-lg-8 col-sm-8 col-xs-8">
+            <p class="text-center font-size-14">Đơn hàng của bạn đang được xử lý</p>
+        </div>
+    </div>
+    <div id="success" style="display:none">
+        <p>Lưu đơn hàng thành công, quý khách sẽ dược liên lạc trong thời gian sớm nhất</p><a href="/">Quay lại trang chủ</a>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+﻿@using StackExchange.Profiling
+@using System.Configuration
+@using HidoSport.Helpers
+@{ 
+    var selfUrl = string.Format("http://{0}", Request.Url.Authority + Request.Url.AbsolutePath).TrimEnd('/');
+    var test = ViewBag.Title;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    @if (IsSectionDefined("meta"))
+    {
+        @RenderSection("meta")
+    }
+    else
+    {
+        <title>
+            @ViewBag.Title
+        </title>
+        <meta name="keywords" content="Box mạng, cammera , hàng viễn thông, , VietCuong">
+        <meta name="description" content="VietCuong chuyên cung cấp thiết bị viễn thông, mẫu mã đa dạng nhiều sự lựa chọn,uy tín bậc nhất">
+    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="copyright" content="VietCuong Telecome" />
+    <meta name="author" content="VietCuong Telecome" />
+    <meta name="robots" content="index,follow" />
+    <meta http-equiv="content-language" content="vi" />
+    <meta name="geo.region" content="VN" />
+    <meta name="geo.placename" content="Hồ Chí Minh" />
+    <meta name="geo.position" content="10.777636;106.655864" />
+    <meta name="ICBM" content="10.777636, 106.655864" />
+    <link rel="shortcut icon" href="~/Content/images/fav.png" type="image/x-icon" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <meta property="fb:app_id" content="1264407963673460" />
+    <meta property="og:site_name" content="vietcuongtelecom.com" />
+    <meta property="og:type" content="product" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:url" itemprop="url" content="@selfUrl" />
+    <meta property="og:title" content="@Html.Raw(ViewBag.Title)" />
+    <meta property="og:description" content="VietCuong chuyên cung cấp thiết bị viễn thông, mẫu mã đa dạng nhiều sự lựa chọn,uy tín bậc nhất" />
+    <meta property="og:image" content="http://www.vietcuongtelecom.com/Content/images/fb-thumb.png" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="315" />
+    <style>
+        @Html.Raw(ViewHelper.GetCss("css/bootstrap.min",false))
+        @Html.Raw(ViewHelper.GetCss("css/font-awesome.min", false))
+        @Html.Raw(ViewHelper.GetCss("css/style.min", false))
+    </style>
+    @*<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:light&v1' rel='stylesheet' type='text/css'>*@
+    @RenderSection("CssPath")
+</head>
+<body>
+    <!--TOP TITLE-->
+    @if (!Request.Browser.IsMobileDevice)
+    {
+        <div class="info-top">
+            <div class="container">
+                <div class="row top-banner">
+                    <div class="col-xs-12 col-sm-3 col-md-3">
+                        <a href="/" type="logo.png"><img src="~/Content/images/logo.png" class="" alt="Logo"></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <p class="phone"><img src="~/Content/images/phone-icon.png" /> 0981677939</p>
+                        <h1>Chuyên cung cấp camera và thiết bị viễn thông</h1>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="/gio-hang" class="btn btn-default btn-cart-top" type="button">
+                            <span class="fa fa-shopping-cart"></span>
+                            <span id="count-number"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!--NewMenu-->
+    @Html.Action("NewMenu", "Default")
+    
+    <!--END TITLE-->
+    @RenderBody()
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-xs-7">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <ul>
+                                    <li><h3>Về chúng tôi</h3></li>
+                                    <li>
+                                        <p>
+                                            Việt Cường telecom chuyên cung cấp sỉ và lẻ các linh kiện viễn thông, camera, android box, cáp mạng với chất lượng và độ uy tín sẽ làm hài lòng mọi quý khách.
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-8">
+                                <h3>Các liên kết</h3>
+                                @Html.Action("BottomCategory", "Default")
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top:15px;">
+                            <div class="col-lg-6 no-padding">
+                                <p><b>Số điện thoại: </b><a href="tel:0981677939">0981677939</a></p>
+                                <p><b>© Bản quyền 2016 thuộc sở hữu VietCuong Telecome</b></p>
+                            </div>
+                            <div class="col-lg-3 social">
+                                <p><a href="https://www.facebook.com/vienthongvietcuong/" target="_blank"><img src="~/Content/images/fb.png"></a><img src="~/Content/images/g.png"><img src="~/Content/images/tw.png"></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="">
+                        <h3>Địa chỉ liên hệ</h3> <span>319 B5 LÝ THƯỜNG KIỆT, PHƯỜNG 15, QUẬN 11, TPHCM</span>
+                        <div class="b-map">
+                            <iframe style="width:100%; height:200px; border:none;" src="https://www.google.com/maps/embed/v1/search?q=319-B5%2C%20L%C3%BD%20Th%C6%B0%E1%BB%9Dng%20Ki%E1%BB%87t%2C%20ph%C6%B0%E1%BB%9Dng%2015%2C%20S%C3%A0i%20G%C3%B2n%2C%20Qu%E1%BA%ADn%2011%2C%20Ho%20Chi%20Minh%2C%20Vietnam&key=AIzaSyCvvnoZsUukTgRfjmNMFZjh1HKW8hpV1Uo" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <script type="text/javascript" src="~/Scripts/style.mobile@(ConfigurationManager.AppSettings["Minify"]).js" asyns></script>
+
+    }
+    else
+    {
+        <script type="text/javascript" src="~/Scripts/style@(ConfigurationManager.AppSettings["Minify"]).js" asyns></script>
+
+    }
+    @RenderSection("JsPath")
+    @MiniProfiler.RenderIncludes()
+    <style>
+        .fb-messengermessageus {
+            display: inline-block;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+    <div class="fb-messengermessageus"
+         messenger_app_id="1264407963673460"
+         page_id="931653023586037"
+         color="blue"
+         size="large">
+    </div>  
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+              appId: "1264407963673460",
+            xfbml: true,
+            version: "v2.8"
+          });
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) { return; }
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=1264407963673460";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>

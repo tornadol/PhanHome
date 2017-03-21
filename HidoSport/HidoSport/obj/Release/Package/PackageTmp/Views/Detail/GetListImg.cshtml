@@ -1,0 +1,37 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "GetListImg";
+}
+<div class="quick-image">
+    <div class="single-quick-image text-center">
+        <div class="list-img">
+            <div class="product-img tab-content">
+                @foreach (var i in Model)
+                {
+                    <div class="simpleLens-container tab-pane fade @(Model.IndexOf(i) == 0 ? "active in":"")" id="sin-@(Model.IndexOf(i)+1)">
+                        <a class="simpleLens-image" data-lens-image="@i" href="javascript:;">
+                            <img src="@i" alt="" class="simpleLens-big-image">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @*<div class="quick-thumb">
+        <ul class="product-slider">
+            @foreach (var i in Model)
+            {
+                <li class="@(Model.IndexOf(i) == 0 ? "active":"")">
+                    <a data-toggle="tab" href="#sin-@(Model.IndexOf(i)+1)" aria-expanded="false"> 
+                        <img src="@i" alt="quick view"> 
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>*@
+</div>
+
+
+
+
+

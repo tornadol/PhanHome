@@ -1,0 +1,485 @@
+﻿@using System.Web.Mvc.Html
+@using HidoSport.Areas.Admin.Helpers
+@using HidoSport.Areas.Admin.Models
+@model ItemEdit
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string ImageViewPath = "http://aobanhhido.com/Areas/Admin/Assets/Upload";
+}
+@section CssPath{
+}
+@section CssInclude{
+<style>
+    #frmFaq {
+        display: block;
+    }
+
+    #description_0 {
+        padding: 5px;
+        width: 609px;
+        height: 250px;
+        max-height: 250px;
+        border: 1px solid #ccc;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-radius: 4px 4px 0 0;
+        background: #f7f8fc;
+        border-bottom: 0;
+    }
+
+        #description_0 img {
+            max-width: 94%;
+        }
+
+        #description_0 ul li {
+            list-style: circle;
+            margin-left: 20px;
+        }
+
+        #description_0 a {
+            color: #167ac6;
+        }
+
+    #id-formattext {
+        display: block;
+        height: 35px;
+        border-top: 0;
+    }
+
+    .ul-formattext {
+        padding: 0;
+        width: 610px;
+        clear: both;
+        background: #eaedf4;
+        overflow: hidden;
+        display: block;
+        border-radius: 0 0 4px 4px;
+        border: 1px solid #ccc;
+        border-top: 0;
+        margin-left: 0px;
+        cursor: pointer;
+    }
+
+        .ul-formattext li {
+            width: 40px;
+            height: 33px;
+            border: 1px solid #dadada;
+            border-radius: 4px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            float: left;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .ul-formattext .li-formattext-Img {
+            width: 122px;
+            height: 35px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 11px;
+            color: #646464;
+            position: relative;
+            overflow: hidden;
+            border: 0;
+        }
+
+            .ul-formattext .li-formattext-Img .iconfaq_insertimg {
+                display: inline-block;
+                vertical-align: middle;
+                width: 30px;
+                height: 22px;
+                background-position: -61px 1px;
+                margin-left: 3px;
+                margin-bottom: 7px;
+            }
+
+            .ul-formattext .li-formattext-Img input {
+                cursor: pointer;
+                font-size: 100px;
+                opacity: 0.01;
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 0 !important;
+                width: 116px;
+                height: 39px;
+                border: 0;
+            }
+
+            .ul-formattext .li-formattext-Img span {
+                padding-left: 5px;
+                line-height: 33px;
+                color: #4791e8;
+                font-size: 15px;
+                margin-top: 2px;
+                display: inline-block;
+            }
+</style>    
+}
+@section JsPath{
+    <script src="@(ViewBag.rsrc)js-page/item.js"></script>
+    <script src="@(ViewBag.rsrc)/js/tinymce/tinymce.min.js"></script>
+    <script src="@(ViewBag.rsrc)/js/bootstrap-tag.min.js"></script>
+    <script src="@(ViewBag.rsrc)js-page/item.js"></script>
+    <script src="@(ViewBag.rsrc)js/showupimage.js"></script>
+    <script src="@(ViewBag.rsrc)/js/bootstrap-tag.min.js"></script>
+    <script src="@(ViewBag.rsrc)/js/tinymce/tinymce.min.js"></script>
+    <script src="@(ViewBag.rsrc)/js/jquery.html5uploader.min.js"></script>
+    <script src="@(ViewBag.rsrc)js-page/magfaq.dev.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#fulldes',
+            height: 500,
+            plugins: [
+              'advlist autolink lists link image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            content_css: [
+              '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+              '//www.tinymce.com/css/codepen.min.css'
+            ]
+        });
+        var tag_input = $('#form-field-tags');
+        try {
+            tag_input.tag(
+              {
+                  placeholder: tag_input.attr('placeholder')
+
+              }
+            )
+            var $tag_obj = $('#form-field-tags').data('tag');
+            $tag_obj.add('Biệt thự');
+        }
+        catch (e) {
+            tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
+        }
+    </script>
+}
+@section JsInclude{
+    <script>
+        $(function () {
+            $('.nav-list').find('#item').addClass("active");
+            $('.nav-list').find('#item').find('b').addClass("arrow");
+            $('#id-input-file-1 , #id-input-file-2').ace_file_input({
+                no_file: 'No File ...',
+                btn_choose: 'Choose',
+                btn_change: 'Change',
+                droppable: false,
+                onchange: null,
+                thumbnail: false 
+            });
+
+            $('#id-input-file-3').ace_file_input({
+                style: 'well',
+                btn_choose: 'Drop files here or click to choose',
+                btn_change: null,
+                no_icon: 'ace-icon fa fa-cloud-upload',
+                droppable: true,
+                thumbnail: 'small'
+                ,
+                preview_error: function (filename, error_code) {
+                }
+
+            }).on('change', function () {
+            });
+            //dynamically change allowed formats by changing allowExt && allowMime function
+            $('#id-file-format').removeAttr('checked').on('change', function () {
+                var whitelist_ext, whitelist_mime;
+                var btn_choose
+                var no_icon
+                if (this.checked) {
+                    btn_choose = "Drop images here or click to choose";
+                    no_icon = "ace-icon fa fa-picture-o";
+
+                    whitelist_ext = ["jpeg", "jpg", "png", "gif", "bmp"];
+                    whitelist_mime = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/bmp"];
+                }
+                else {
+                    btn_choose = "Drop files here or click to choose";
+                    no_icon = "ace-icon fa fa-cloud-upload";
+
+                    whitelist_ext = null;//all extensions are acceptable
+                    whitelist_mime = null;//all mimes are acceptable
+                }
+                var file_input = $('#id-input-file-3');
+                file_input
+                .ace_file_input('update_settings',
+                {
+                    'btn_choose': btn_choose,
+                    'no_icon': no_icon,
+                    'allowExt': whitelist_ext,
+                    'allowMime': whitelist_mime
+                })
+                file_input.ace_file_input('reset_input');
+
+                file_input
+                .off('file.error.ace')
+                .on('file.error.ace', function (e, info) {
+                });
+            });
+
+            $('#spinner1').ace_spinner({ value: 0, min: 0, max: 200, step: 10, btn_up_class: 'btn-info', btn_down_class: 'btn-info' })
+            .closest('.ace-spinner')
+            .on('changed.fu.spinbox', function () {
+                //alert($('#spinner1').val())
+            });
+            $('#spinner2').ace_spinner({ value: 0, min: 0, max: 10000, step: 100, touch_spinner: true, icon_up: 'ace-icon fa fa-caret-up bigger-110', icon_down: 'ace-icon fa fa-caret-down bigger-110' });
+            $('#spinner3').ace_spinner({ value: 0, min: -100, max: 100, step: 10, on_sides: true, icon_up: 'ace-icon fa fa-plus bigger-110', icon_down: 'ace-icon fa fa-minus bigger-110', btn_up_class: 'btn-success', btn_down_class: 'btn-danger' });
+            $('#spinner4').ace_spinner({ value: 0, min: -100, max: 100, step: 10, on_sides: true, icon_up: 'ace-icon fa fa-plus', icon_down: 'ace-icon fa fa-minus', btn_up_class: 'btn-purple', btn_down_class: 'btn-purple' });
+            $('#modal-form input[type=file]').ace_file_input({
+                style: 'well',
+                btn_choose: 'Drop files here or click to choose',
+                btn_change: null,
+                no_icon: 'ace-icon fa fa-cloud-upload',
+                droppable: true,
+                thumbnail: 'large'
+            })
+        })
+        //Upload ảnh
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#fulldes',
+            height: 500,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            content_css: [
+                '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+                '//www.tinymce.com/css/codepen.min.css'
+            ]
+        });
+        var tag_input = $('#form-field-tags');
+        try {
+            tag_input.tag(
+              {
+                  placeholder: tag_input.attr('placeholder')
+
+              }
+            )
+            var $tag_obj = $('#form-field-tags').data('tag');
+            $tag_obj.add('Biệt thự');
+        }
+        catch (e) {
+            tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
+        }
+    </script>
+}
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <a href="@Url.Action("Index")">Danh sách sản phẩm</a>
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                    Chỉnh sửa sản phẩm
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+    
+    @if (Model.Item != null)
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                @*<form class="form-horizontal" role="form" action="Edit" method="post">*@
+                @using (Html.BeginForm("Save", "Item", new { ReturnUrl = ViewBag.ReturnUrl ,id = Model.Item.Id}, FormMethod.Post, new {role = "form",@class="form-horizontal", enctype = "multipart/form-data" }))
+                {
+                    <div style="min-height:315px;">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trạng thái </label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="form-field-select-1" name="status">
+                                    <option value="1" @(Model.Item.Status == 1 ? "selected" : "")>Hoạt động</option>
+                                    <option value="0" @(Model.Item.Status == 0 ? "selected" : "")>Khóa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trạng thái </label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="form-field-select-1" name="status">
+                                    <option value="1" @(Model.Item.highlight == 1 ? "selected" : "")>Nổi bật</option>
+                                    <option value="0" @(Model.Item.highlight == 0 ? "selected" : "")>Bình thường</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên:</label>
+                            <div class="col-sm-4">
+                                <input class="input-text" type="text" name="name" placeholder="Tên sản phẩm" value="@Model.Item.Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Danh mục </label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="cate" id="cate" placeholder="Chọn ngành hàng" required>
+                                    <option value=""> </option>
+                                    @{
+                                        var lstCate = ItemHelper.GetCate();
+                                    }
+                                    @foreach (var i in lstCate)
+                                    {
+                                        <option value="@i.Id" @(Model.Item.CateId == i.Id ? "selected" : "")>@i.Name</option>
+                                    }
+                                </select>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Danh mục chi tiết </label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="cateChild" id="catechild" placeholder="" required>
+                                    <option value=""> </option>
+                                    @{
+                                        var lstCateChild = ItemHelper.GetCateChild();
+                                        var a = Model.Item.CateChildId;
+                                    }
+                                    @foreach (var i in lstCateChild)
+                                    {
+                                        <option value="@i.Id" class="@i.CateId" @(Model.Item.CateChildId == i.Id ? "selected" : "")>@i.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Giá tiền: </label>
+                            <div class="col-sm-4">
+                                <input class="input-text input-number" type="text" name="price" placeholder="Giá tiền" value="@Model.Item.Price" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Hình ảnh </label>
+                            <div class="col-sm-4">
+                                <div class="widget-box">
+                                    <div class="widget-header">
+                                        <h4 class="widget-title">Lựa chọn hình ảnh</h4>
+
+                                        <div class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+
+                                            <a href="#" data-action="close">
+                                                <i class="ace-icon fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+                                            <div class="form-group">
+                                                <div class="col-xs-12">
+                                                    <input multiple="" type="file" id="id-input-file-3" name="file" value="/Areas/@Model.Item.ImgSrc" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="widget-box">
+                                    <div class="widget-header">
+                                        <h4 class="widget-title">Hình ảnh cũ</h4>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <img src="@Model.Item.ImgSrc" style="margin: auto;display: block; width: 50%;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Danh sách hình ảnh: </label>
+                            <div class="col-sm-9">
+                                <div class="addquestion">
+                                    <div id="frmFaq">
+                                        <div id="description_0" name="description_0" contenteditable="true" placeholder="Nhập nội dung câu hỏi của bạn">
+                                            @{ 
+                                                var lstImgData = ItemHelper.GetLstImg(Model.Item.Id);
+                                                var lstImagesNew = "";
+                                                foreach (var img in lstImgData)
+                                                {
+                                                    lstImagesNew = img.Link + ",";
+                                                }
+                                            }
+                                            @foreach (var img in lstImgData)
+                                            {
+                                                <img src="@img.Link" alt="" style="max-width:100px">
+                                            }
+                                            <input type="hidden" name="lstImagesNew"  value="@lstImagesNew"/>
+                                        </div>
+                                        <div id="id-formattext">
+                                            <ul class="ul-formattext">
+                                                <li id="li-formattext-Img" class="li-formattext-Img">
+                                                    <input style="background-color: transparent;" nv-file-select multiple id="uploadfromicon" title="Chèn ảnh kích thước tối đa 1MB/hình" name="fileLstImg" type="file" accept="image/*" onchange='openReadFile(event)'>
+                                                    <input type="hidden" name="lstImagesNew" />
+                                                    <span>Chèn hình</span>
+                                                </li>
+                                            </ul>
+                                            <div class="fileattach" style="display:none">
+                                                <ul class="list-file-attach">
+                                                    @if (ViewBag.FOL != null)
+                                                    {
+                                                        string limg = ViewBag.FOL["lUpimage"];
+                                                        string[] lstImg = limg.Split(';');
+                                                        if (lstImg.Length > 0)
+                                                        {
+                                                            foreach (var item in lstImg)
+                                                            {
+                                                                if (!string.IsNullOrEmpty(item))
+                                                                {
+                                                                    int po = 0;
+                                                                    string imgUrl = string.Format(ImageViewPath + "/Temp/{0}.jpg", item);
+                                                                    <li id="img-@po" class="file" data="@item">
+                                                                        <a class="remove-file" href="javascript:void(0);" onclick="return faqms.removeFileSs('@item');"></a>
+                                                                        <img src="@imgUrl" alt="@item" id="@item"><span class="imgname" style="display: none;">@item</span>
+                                                                    </li>
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mô tả </label>
+                            <div class="col-sm-4">
+                                <textarea class="input-text" type="text" name="des" required>@Model.Item.Description</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="checkEdit" value="yes" />
+                    <input type="hidden" name="checkBackspace" value="" />
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <a onclick="SummitForm()" class="btn btn-success" type="" >
+                                <i class="ace-icon fa fa-pencil-square-o bigger-110"></i>
+                                Lưu
+                            </a>
+                            &nbsp; &nbsp; &nbsp;
+                            <a class="btn btn-info" type="reset" href="@Url.Action("Index")">
+                                <i class="ace-icon fa fa-reply icon-only bigger-110"></i>
+                                Quay lại
+                            </a>
+                        </div>
+                        <div class="col-md-offset-3 col-md-9 error" style="color:red;display:none">
+                            Chưa nhập đủ thông tin
+                        </div>
+                    </div>
+                }
+                @*</form>*@
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,144 @@
+﻿@using HidoSport.Areas.Admin.Helpers
+@model HidoSport.Areas.Admin.Models.CategoryModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{}
+@section CssInclude{}
+@section JsPath{
+}
+@section JsInclude{
+    <script src="@(ViewBag.rsrc)js-page/category.js"></script>
+}
+@{
+    int page = Model.Page;
+    string search = Model.Search;
+    List<string> link = new List<string>();
+    string url = Model.OriginLink;
+    List<string> uri = new List<string>();
+    //if (search != string.Empty) { uri.Add("q=" + search); }
+    for (var i = 0; i < Model.Pagination.Count; i++)
+    {
+        List<string> tmp = new List<string>();
+
+        foreach (var o in uri)
+        {
+            tmp.Add(o);
+        }
+        tmp.Add("p=" + Model.Pagination[i]);
+        if(search != "")
+        {
+            tmp.Add("s=" + search);
+        }
+        string urltmp = url;
+        if (tmp.Count > 0)
+        {
+
+            urltmp += "?" + LinkHelper.ImplodeString(tmp, "&");
+        }
+        link.Add(urltmp);
+    }
+}
+<!--Brecum-->
+<!--End Brecum-->
+
+<div class="col-xs-12">
+    <div class="col-md-9">
+        <h3 class="header smaller lighter">Danh sách Danh mục
+            <a class="btn btn-minier btn-danger" type="button" href="@Url.Action("Edit/0")">
+                + Thêm mới
+            </a>
+        </h3>
+       
+    </div>
+    <div class="col-md-2" style="padding-top:20px">
+        <span class="input-icon">
+            <input type="text" style="width:166%" placeholder="Tìm kiếm ..." class="nav-search-input" id="nav-search-input" autocomplete="off" value="@Model.Search">
+            <i class="ace-icon fa fa-search nav-search-icon" style="cursor: pointer;"></i>
+        </span>
+    </div>
+    <div class="clearfix">
+        <div class="pull-right tableTools-container"></div>
+    </div>
+    @if (Model.LstItem.Count > 0)
+    {
+        <div>
+            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center">
+                            STT
+                        </th>
+                        <th>Tên Danh mục</th>
+                        <th>Vị trí</th>
+                        <th class="hidden-480">Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var o in Model.LstItem)
+                    {
+                        <tr>
+                            <td class="center">
+                                @(Model.LstItem.IndexOf(o) + 1 + (Model.Page - 1) * 10)
+                            </td>
+                            <td>@o.Name</td>
+                            <td>@o.Sort</td>
+                            <td class="hidden-480">
+                                <span class="label label-sm @(o.Status==0?"label-warning":"label-success")">@StatusHelper.ConverStatus(o.Status)</span>
+                            </td>
+                            <td>
+                                <div class="hidden-sm hidden-xs action-buttons">
+                                    <a class="blue" href="@Url.Action("Detail" ,new { id = @o.Id})">
+                                        <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                                    </a>
+                                    <a class="green" href="@Url.Action("Edit", new { id = @o.Id})">
+                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                    </a>
+                                    <a class="red" href="javascript:;">
+                                        <input type="hidden" class="id" value="@o.Id" />
+                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <!--PAGINATION-->
+            <div class="row">
+                <div class="col-xs-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+                        <ul class="pagination">
+                            @if (Model.Pagination.Count > 1)
+                            {
+                                for (var i = 0; i < Model.Pagination.Count; i++)
+                                {
+                                    if (@Convert.ToInt32(i) == 0)
+                                    {
+                                        <li class="paginate_button @(page == @Model.Pagination[i] ? "active" : "")"><a class="@(page == @Model.Pagination[i] ? "active" : "")" href="@link[i]">@Model.Pagination[i]</a></li>
+                                    }
+                                    else if (Model.Pagination[i] - Model.Pagination[i - 1] > 1)
+                                    {
+                                        <li class="">...</li>
+                                        <li class="paginate_button @(page == @Model.Pagination[i] ? "active" : "")"><a class="@(page == @Model.Pagination[i] ? "active" : "")" href="@link[i]">@Model.Pagination[i]</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="paginate_button @(page == @Model.Pagination[i] ? "active" : "")"><a class="@(page == @Model.Pagination[i] ? "active" : "")" href="@link[i]">@Model.Pagination[i]</a></li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--END PAGINATION-->
+        </div>
+    }
+    else
+    {
+        <span>Kết quả tìm kiếm không phù hợp</span>
+    }
+
+</div>

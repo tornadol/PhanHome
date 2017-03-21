@@ -1,0 +1,26 @@
+﻿@using HidoSport.Models
+@using HidoSport.Helpers
+@model List<Product>
+@{
+    ViewBag.Title = "LstProductSame";
+}
+<div class="container">
+    <div class="col-xs-12 lst-sample">
+        <span class="title">
+            Sản phâm tương tự
+        </span>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li class="col-lg-3 col-sm-3 col-xs-6">
+                    <a href="/@item.Link">
+                        <img src="@item.Item.ImgSrc">
+                        <h4>@item.Item.Name</h4>
+                        <span class="price">@item.Item.Price.ToCurrency()</span>
+                    </a>
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>

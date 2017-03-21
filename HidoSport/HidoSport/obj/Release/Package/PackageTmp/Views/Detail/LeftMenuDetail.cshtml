@@ -1,0 +1,22 @@
+﻿@model List<HidoSport.Models.LeftMenu>
+@{
+    ViewBag.Title = "LeftMenuDetail";
+}
+
+<h2>Danh mục sản phẩm</h2>
+<ul>
+    @foreach (var i in Model)
+    {
+        <li class="parent-menu">
+            <a href="/@i.Cate.NameCode">@i.Cate.Name</a>
+        </li>
+        foreach (var a in i.CateChild)
+        {
+
+            <li>
+                <a href="/@i.Cate.NameCode/@a.NameCode">@a.Name</a>
+            </li>
+        }
+    }
+</ul>
+

@@ -1,0 +1,130 @@
+﻿@using HidoSport.Models;
+@using HidoSport.Helpers;
+@using HidoSport.Areas.Admin.Helpers
+@using System.Configuration;
+@model ListCateItem
+@{
+
+    ViewBag.Title = (ViewBag.CateChildName == null ? ViewBag.CateName : ViewBag.CateChildName )+ " giá xỉ, chất lượng tốt cho mọi người";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int page = Model.Page;
+    string search = Model.Search;
+    List<string> link = new List<string>();
+    string url = Model.OriginLink;
+    List<string> uri = new List<string>();
+    //if (search != string.Empty) { uri.Add("q=" + search); }
+    for (var i = 0; i < Model.Pagination.Count; i++)
+    {
+        List<string> tmp = new List<string>();
+
+        foreach (var o in uri)
+        {
+            tmp.Add(o);
+        }
+        tmp.Add("p=" + Model.Pagination[i]);
+        if (search != "")
+        {
+            tmp.Add("s=" + search);
+        }
+        string urltmp = url;
+        if (tmp.Count > 0)
+        {
+
+            urltmp += "?" + LinkHelper.ImplodeString(tmp, "&");
+        }
+        link.Add(urltmp);
+    }
+}
+@section CssPath{
+    <style>
+        @Html.Raw(ViewHelper.GetCss("css/cate.min",false))
+    </style>
+    @*<link rel="stylesheet" type="text/css" href="~/Content/css/cate.min.css" />*@
+}
+@section JsPath{
+    <script type="text/javascript" src="~/scripts/cate.min.js" async defer></script>
+}
+<div class="row row-title">
+    <div class="container">
+        <ul class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
+            <li typeof="v:Breadcrumb"><a href="/" title="Trang chủ">Trang chủ</a> <i class="glyphicon glyphicon-menu-right"></i></li>
+            <li typeof="v:Breadcrumb"><a href="/@Extension.ToURL(@ViewBag.CateName)" title="@ViewBag.CateName">@ViewBag.CateName</a> <i class="glyphicon glyphicon-menu-right"></i></li>
+            @if (@ViewBag.CateChildName != null)
+            {
+                <li typeof="v:Breadcrumb"><a href="/@Extension.ToURL(@ViewBag.CateName)/@Extension.ToURL(@ViewBag.CateChildName)" title="@ViewBag.CateChildName">@ViewBag.CateChildName</a> <i class="glyphicon glyphicon-menu-right"></i></li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="product-sales">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-3 col-md-3 menu-left">
+                @Html.Action("LeftMenuDetail", "Detail")
+            </div>
+            <div class="col-sm-9 col-lg-9 col-md-9 nopadding lst-item">
+                <div class="row no-padding">
+                    @if (Model != null && Model.LstProduct.Count > 0)
+                    {
+                        foreach (var item in Model.LstProduct)
+                        {
+                            <div class="col-lg-6 col-sm-6 col-xs-12 nopadding-right">
+                                <div class="item">
+                                    <a href="/@item.Link" class="">
+                                        <img src="@item.Item.ImgSrc" />
+                                    </a>
+                                    <div class="right">
+                                        <h4>@item.Item.Name </h4>
+                                        <span class="price">@item.Item.Price.ToCurrency()</span>
+                                        <a href="/@item.Link" class="buy-now">
+                                            Xem chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <div>Không có sản phẩm phù hợp</div>
+                    }
+                </div>
+                <!--PAGINATION-->
+                @if (Model.Pagination.Count >0)
+                {
+                    <div class="row">
+                        <div class="page" id="dynamic-table_paginate">
+                            <ul>
+                                @if (Model.Pagination.Count > 1)
+                                {
+                                    for (var i = 0; i < Model.Pagination.Count; i++)
+                                    {
+                                        if (@Convert.ToInt32(i) == 0)
+                                        {
+                                            <li class="paginate_button @(page == @Model.Pagination[i] ? "active" : "")"><a class="@(page == @Model.Pagination[i] ? "active" : "")" href="@link[i]">@Model.Pagination[i]</a></li>
+                                        }
+                                        else if (Model.Pagination[i] - Model.Pagination[i - 1] > 1)
+                                        {
+                                            <li class="">...</li>
+                                                    <li class="paginate_button @(page == @Model.Pagination[i] ? "active" : "")"><a class="@(page == @Model.Pagination[i] ? "active" : "")" href="@link[i]">@Model.Pagination[i]</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class="paginate_button @(page == @Model.Pagination[i] ? "active" : "")"><a class="@(page == @Model.Pagination[i] ? "active" : "")" href="@link[i]">@Model.Pagination[i]</a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+                <!--END PAGINATION-->
+                <div class="row">
+
+                </div>
+            </div><!-- END .MIDDLE-SALES -->
+        </div>
+    </div>
+</div>

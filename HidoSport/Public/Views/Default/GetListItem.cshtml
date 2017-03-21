@@ -1,0 +1,76 @@
+﻿@using HidoSport.Models
+@using HidoSport.Helpers
+@model HomeItem
+@{
+    ViewBag.Title = "GetListItem";
+}
+@if (Model.LstProduct != null)
+{
+    <div class="container lst-product">
+         <div class="row">
+                @if (Model.Menu != null)
+                {
+                    <div class="col-xs-12">
+                        <div class="home-header">
+                            <h2>
+                                <a href="/@Model.Menu.FirstOrDefault().Name">@Model.Menu.FirstOrDefault().Name</a>
+                            </h2>
+                            <div class="btn-group pull-right visible-xs-block visible-sm-block">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="title">Danh mục</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    @foreach (var menuchild in Model.Menu)
+                                    {
+                                        <li><a href="/@menuchild.Link" title="@menuchild.Name">@menuchild.NameChild</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <ul class="visible-lg-block visible-md-block">
+                                @foreach (var menuchild in Model.Menu)
+                                {
+                                    <li><a href="/@menuchild.Link" title="@menuchild.Name">@menuchild.NameChild</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xs-12">
+                        <div class="home-header">
+                            <h2>
+                                <a href="/san-pham-moi">Sản phẩm mới</a>
+                            </h2>
+                        </div>
+                    </div>
+                }
+                <div class="products">
+                    <ul class="col-xs-12">
+                        @foreach (var pro in Model.LstProduct)
+                        {
+                            <li class="col-xs-6 col-sm-3 col-lg-3">
+                                <a href="/san-pham@(pro.Link)">
+                                    <img data-src="@pro.ImgSrc">
+                                    <h4>@pro.Name</h4>
+                                    <div>
+                                        <h5>@pro.NameChild</h5>
+                                        @if (pro.highlight == 1)
+                                        {
+                                            <img class="img-highlight" src="/Content/images/hightlight.png" />
+                                        }
+                                    </div>
+                                    <span class="price">@pro.Price.ToCurrency()</span>
+
+                                </a>
+                                <a href="/san-pham@(pro.Link)" class="buy-now">
+                                    Mua ngay
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+    </div>
+}

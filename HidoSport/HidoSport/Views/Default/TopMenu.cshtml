@@ -1,0 +1,74 @@
+﻿@using HidoSport.Helpers
+@model List<HidoSport.Models.LeftMenu>
+@{
+    ViewBag.Title = "TopMenu";
+}
+
+@*<ul class="dropdown-menu">
+    @foreach (var i in Model)
+    {
+        <li class="dropdown">
+            <a href="@Extension.RemoveUnicodeLower(i.Name)" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@i.Name</a>
+        </li>
+    }
+</ul>*@
+
+<header>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header hidden-sm hidden-lg">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse js-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="">
+                        <a href="/trang-chu" class="add-active">Trang chủ</a>
+                    </li>
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle add-active" data-toggle="dropdown">Sản phẩm<span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu row">
+                            @foreach (var i in Model)
+                            {
+                                <li class="col-sm-3">
+                                    <ul>
+                                        @if (Model.IndexOf(i) == 0)
+                                        {
+                                           <li class="dropdown-header"><a class="" href="@Extension.RemoveUnicodeLower(i.Cate.Name)"><h1>@i.Cate.Name</h1></a></li>
+                                        }
+                                        else
+                                        {
+                                           <li class="dropdown-header"><a class="" href="@Extension.RemoveUnicodeLower(i.Cate.Name)">@i.Cate.Name</a></li>
+                                        }
+                                        @foreach (var b in i.CateChild)
+                                        {
+                                            <li><a href="@Extension.RemoveUnicodeLower(i.Cate.Name)/@Extension.RemoveUnicodeLower(b.Name)">@b.Name</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="/gioi-thieu" class="add-active" >Giới thiệu</a>
+                    </li>
+                    <li class="add-active">
+                        <a href="/gioi-thieu#giao-hang">Chính sách giao hàng</a>
+                    </li>
+                    <li class="telephone">
+                        <a href="tel:0981677939">
+                            <img class="info" src="~/Content/images/phone-icon.png">
+                            <b>0981677939</b>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+        </nav>
+    </div>
+</header>
+

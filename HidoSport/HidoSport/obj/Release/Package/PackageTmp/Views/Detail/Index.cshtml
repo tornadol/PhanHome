@@ -1,0 +1,152 @@
+﻿@using HidoSport.Models;
+@using HidoSport.Helpers;
+@using System.Configuration;
+@model Product
+@{
+    ViewBag.Title = Model.Item.Name + " , giá cả hợp lý chất lượng khỏi chê";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{
+    <style>
+        @Html.Raw(ViewHelper.GetCss("css/detail", false))
+    </style>
+}
+@section JsPath{
+    <script type="text/javascript" src="~/scripts/detail@(ConfigurationManager.AppSettings["Minify"]).js" async></script>
+}
+@if (Model != null)
+{
+    <div class="row row-title">
+        <div class="container">
+            <ul class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
+                <li typeof="v:Breadcrumb"><a href="/" title="Trang chủ">Trang chủ</a> <i class="glyphicon glyphicon-menu-right"></i></li>
+                <li typeof="v:Breadcrumb"><a href="/@Extension.ToURL(Model.Cate)" title="@Model.Cate">@Model.Cate</a> <i class="glyphicon glyphicon-menu-right"></i></li>
+                @if (Model.CateChild != null)
+                {
+                    <li typeof="v:Breadcrumb"><a href="/@Extension.ToURL(Model.CateChild)/@Extension.ToURL(Model.CateChild)" title="@ViewBag.CateChildName">@Model.CateChild</a> <i class="glyphicon glyphicon-menu-right"></i></li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-3 menu-left">
+                    @Html.Action("LeftMenuDetail","Detail")
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-9">
+                    <div class="container">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            @Html.Action("GetListImg", "Detail", new { productId = Model.Item.Id, firstImg = Model.Item.ImgSrc })
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="quick-right">
+                                <div class="list-text">
+                                    <h3>@Model.Item.Name</h3>
+                                    <span>
+                                        @Model.Cate
+                                        @if (Model.CateChild != null)
+                                        {
+                                            <b>/</b>  @Model.CateChild
+                                        }
+                                    </span>
+                                    <h5 class="price">@Model.Item.Price.ToCurrency()</h5>
+                                    <div class="all-choose">
+                                        <div class="s-shoose">
+                                            <h5>Số lượng</h5>
+                                            <div class="plus-minus">
+                                                <a class="dec qtybutton">-</a>
+                                                <input type="text" value="1" name="qtybutton" class="plus-minus-box">
+                                                <a class="inc qtybutton">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-btn">
+                                        @*<a href="#">Mua Ngay</a>*@
+                                        <a class="add-cart" href="javascript:;">Thêm vào giỏ hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-request">
+                                <h3>Gửi yêu cầu cho chúng tôi</h3>
+                                <form  method="post">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                                <label for="exampleInputEmail1">Email</label>
+                                                <input type="email" class="form-control" name="email" placeholder="Địa chỉ Email">
+                                            </div>
+                                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                                <label for="exampleInputPassword1">SĐT</label>
+                                                <input type="tel" class="form-control" name="phone" placeholder="Số điện thoại">
+                                            </div>
+                                            <textarea rows="4" name="des">
+
+                                            </textarea>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                    <span class="lblerr"></span>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-xs-12">
+                            <div class="reviews padding60 margin-top">
+                                <ul class="reviews-tab clearfix">
+                                    <li class="active"><a data-toggle="tab" href="#moreinfo" aria-expanded="true">Mời bạn bình luận về sản phẩm</a></li>
+                                </ul>
+                                <div class="fb-comments" data-href="http://www.vietcuongtelecom.com/san-pham/@Model.Item.NameCode" data-numposts="5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model.Item.Description != null && !String.IsNullOrEmpty(Model.Item.Description))
+                    {
+                        <div class="container">
+                            <div class="col-xs-12">
+                                <div class="reviews padding60 margin-top">
+                                    <ul class="reviews-tab clearfix">
+                                        <li class="active"><a data-toggle="tab" href="#moreinfo" aria-expanded="true">Thông tin thêm</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="info-reviews moreinfo tab-pane fade active in" id="moreinfo">
+                                            @Html.Raw(Model.Item.Description)
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @Html.Action("LstProductSame", "Detail", new { item = @Model.Item })
+               </div>
+            </div>
+            <!-- single-product item end -->
+            <!-- reviews area start -->
+            
+        </div>
+    </div>
+    <input type="hidden" id="productId" value="@Model.Item.Id"/>
+    <input type="hidden" id="pd-price" value="@Model.Item.Price" />
+    <input type="hidden" id="name" value="@Model.Item.Name" />
+    <input type="hidden" id="image" value="@Model.Item.ImgSrc"/>
+}
+
+<div id="cboxOverlay" style="display:none"></div>
+<div id="pay-preloader" clas="row" style="display:none">
+    <div id="preload">
+        <div class="col-lg-4 col-sm-4 col-sm-4 col-xs-4">
+            <div class="loader"></div>
+        </div>
+        <div class="col-lg-8 col-sm-8 col-xs-8">
+            <p class="text-center font-size-14">Yêu cầu của bạn đang được xử lý</p>
+        </div>
+    </div>
+    <div id="success" style="display:none">
+        <p>Lưu đơn yêu cầu thành công, quý khách sẽ dược liên lạc trong thời gian sớm nhất</p><a href="javascript:window.location.reload();">Tiếp tục</a>
+    </div>
+</div>

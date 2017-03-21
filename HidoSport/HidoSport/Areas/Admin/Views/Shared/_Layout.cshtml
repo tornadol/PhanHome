@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Control-Panel</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <META HTTP-EQUIV="Content-language" CONTENT="vi">
+    <link rel="stylesheet" href="@(ViewBag.rsrc)css/bootstrap.min.css" />
+    <link rel="stylesheet" href="@(ViewBag.rsrc)font-awesome/4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="@(ViewBag.rsrc)fonts/fonts.googleapis.com.css" />
+    <link rel="stylesheet" href="@(ViewBag.rsrc)css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="@(ViewBag.rsrc)css/ace-part2.css" class="ace-main-stylesheet" />
+    <link rel="stylesheet" href="@(ViewBag.rsrc)css/ace-ie.min.css" />
+    <script src="@(ViewBag.rsrc)js/ace-extra.min.js"></script>
+    <script src="@(ViewBag.rsrc)js/html5shiv.min.js"></script>
+    <script src="@(ViewBag.rsrc)js/respond.min.js"></script>
+    @RenderSection("CssPath")
+    @RenderSection("CssInclude")
+</head>
+<body class="no-skin">
+    @Html.Partial("_Header")
+    <div class="row col-md-12">
+        @Html.Action("MenuDetail","Home")
+        <div class="main-container col-md-10" id="main-container">
+            @RenderBody()
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+            </a>
+        </div><!-- /.main-container -->
+    </div>
+    <div class="clearfix"></div>
+    @Html.Partial("_Footer")
+    <!-- basic scripts -->
+    <script src="@(ViewBag.rsrc)js/jquery.2.1.1.min.js"></script>
+    <script src="@(ViewBag.rsrc)js/bootstrap.min.js"></script>
+    <script src="@(ViewBag.rsrc)js/ace-elements.min.js"></script>
+    <script src="@(ViewBag.rsrc)js/ace.min.js"></script>
+    @RenderSection("JsPath")
+    @RenderSection("JsInclude")
+</body>
+</html>
+
+
+
+
+

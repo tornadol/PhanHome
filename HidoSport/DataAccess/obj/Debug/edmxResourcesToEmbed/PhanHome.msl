@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PhanHomeModelStoreContainer" CdmEntityContainer="PhanHomeEntities">
+    <EntitySetMapping Name="Cates">
+      <EntityTypeMapping TypeName="PhanHomeModel.Cate">
+        <MappingFragment StoreEntitySet="Cate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CateChilds">
+      <EntityTypeMapping TypeName="PhanHomeModel.CateChild">
+        <MappingFragment StoreEntitySet="CateChild">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+          <ScalarProperty Name="CateId" ColumnName="CateId" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="PhanHomeModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerBuys">
+      <EntityTypeMapping TypeName="PhanHomeModel.CustomerBuy">
+        <MappingFragment StoreEntitySet="CustomerBuy">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+          <ScalarProperty Name="PriceProduct" ColumnName="PriceProduct" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageDetails">
+      <EntityTypeMapping TypeName="PhanHomeModel.ImageDetail">
+        <MappingFragment StoreEntitySet="ImageDetail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="PhanHomeModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CateId" ColumnName="CateId" />
+          <ScalarProperty Name="CateChildId" ColumnName="CateChildId" />
+          <ScalarProperty Name="ImgSrc" ColumnName="ImgSrc" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="highlight" ColumnName="highlight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="PhanHomeModel.New">
+        <MappingFragment StoreEntitySet="New">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="FullDes" ColumnName="FullDes" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+          <ScalarProperty Name="ImgSrc" ColumnName="ImgSrc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="PhanHomeModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Des" ColumnName="Des" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admin_Login">
+      <EntityTypeMapping TypeName="PhanHomeModel.Admin_Login">
+        <MappingFragment StoreEntitySet="Admin_Login">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Create_Day" ColumnName="Create_Day" />
+          <ScalarProperty Name="Change_Day" ColumnName="Change_Day" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhanHomeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PhanHome.dbo.Admin_Login' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Admin_Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="255" />
+    <Property Name="Pass" Type="varchar" MaxLength="255" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Cate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Sort" Type="int" />
+  </EntityType>
+  <EntityType Name="CateChild">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="CateId" Type="int" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Sort" Type="int" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+    <Property Name="Price" Type="float" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="IdProduct" Type="int" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Note" Type="ntext" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CustomerBuy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCustomer" Type="int" />
+    <Property Name="NameProduct" Type="nvarchar" MaxLength="255" />
+    <Property Name="PriceProduct" Type="float" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Size" Type="nvarchar" MaxLength="255" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+    <Property Name="IdProduct" Type="int" />
+  </EntityType>
+  <EntityType Name="ImageDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Link" Type="ntext" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Price" Type="float" />
+    <Property Name="CateId" Type="int" />
+    <Property Name="CateChildId" Type="int" />
+    <Property Name="ImgSrc" Type="nvarchar" MaxLength="255" />
+    <Property Name="Link" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+    <Property Name="Status" Type="int" />
+    <Property Name="highlight" Type="int" />
+  </EntityType>
+  <EntityType Name="New">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="FullDes" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="ImgSrc" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phone" Type="float" />
+    <Property Name="Create_Day" Type="datetime" />
+    <Property Name="Change_Day" Type="datetime" />
+    <Property Name="flag" Type="char" MaxLength="1" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Des" Type="ntext" />
+  </EntityType>
+  <EntityContainer Name="PhanHomeModelStoreContainer">
+    <EntitySet Name="Cate" EntityType="Self.Cate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CateChild" EntityType="Self.CateChild" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerBuy" EntityType="Self.CustomerBuy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageDetail" EntityType="Self.ImageDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="New" EntityType="Self.New" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin_Login" EntityType="Self.Admin_Login" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Admin_Login].[Id] AS [Id], 
+    [Admin_Login].[Username] AS [Username], 
+    [Admin_Login].[Pass] AS [Pass], 
+    [Admin_Login].[Create_Day] AS [Create_Day], 
+    [Admin_Login].[Change_Day] AS [Change_Day], 
+    [Admin_Login].[flag] AS [flag]
+    FROM [dbo].[Admin_Login] AS [Admin_Login]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

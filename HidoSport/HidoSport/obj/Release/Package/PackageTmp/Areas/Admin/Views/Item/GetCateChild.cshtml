@@ -1,0 +1,15 @@
+﻿@model List<DataAccess.CateChild>
+
+@{
+    ViewBag.Title = "GetCateChild";
+}
+
+@if (Model != null)
+{
+    foreach (var i in Model)
+    {
+        <option value="@i.Id" >@i.Name</option>
+    }
+}
+
+

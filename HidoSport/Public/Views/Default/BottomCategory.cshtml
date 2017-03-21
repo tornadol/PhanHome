@@ -1,0 +1,20 @@
+﻿@model List<DataAccess.Cate>
+@{
+    ViewBag.Title = "BottomCategory";
+}
+<ul>
+    @foreach (var a in Model)
+    {
+        <li class="col-lg-6" >
+            <a href="/@a.NameCode">@a.Name</a>
+        </li>
+    }
+</ul>
+
+
+@*<ul>
+    <li>Thương hiệu AC</li>
+    <li>Thương hiệu COMET</li>
+    <li>Thương hiệu phân phối</li>
+    <li>Thương hiệu AC-OSRAM</li>
+</ul>*@

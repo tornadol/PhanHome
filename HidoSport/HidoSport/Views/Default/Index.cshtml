@@ -1,0 +1,144 @@
+﻿@using HidoSport.Helpers
+@using System.Configuration
+@{
+    ViewBag.Title = "Chuyên cung cấp mặt hàng viễn thông";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{
+    <style>
+         @Html.Raw(ViewHelper.GetCss("css/home", false))
+    </style>
+}
+@section JsPath{
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <script type="text/javascript" src="~/scripts/home@(ConfigurationManager.AppSettings["Minify"]).mobile.js" defer></script>
+    }
+    else
+    {
+        <script type="text/javascript" src="~/scripts/home@(ConfigurationManager.AppSettings["Minify"]).js" defer></script>
+    }
+}
+
+<!--BANNER-->
+<div class='container'>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-8">
+            <section class="regular slider">
+                <div>
+                    <img src="Content/images/1.jpg" alt="Hình banner Arsenal">
+                </div>
+                <div>
+                    <img data-src="Content/images/2.jpg" alt="Hình banner PSG">
+                </div>
+                <div>
+                    <img data-src="Content/images/3.jpg" alt="Hình banner MANU">
+                </div>
+                <div>
+                    <img data-src="Content/images/1.jpg" alt="Hình banner Bayen">
+                </div>
+                <div>
+                    <img data-src="Content/images/2.jpg" alt="Hình banner Barca">
+                </div>
+            </section>
+        </div>
+        @Html.Partial("~/Views/Default/_RightBanner.cshtml")
+    </div>
+</div>
+<!--END BANNER-->
+
+
+<!--LIST PRODUCT-->
+@Html.Action("GetListItem", "Default",new { cate = 0 })
+@Html.Action("GetListItem", "Default", new { cate = 2 })
+<!--END LIST PRODUCT-->
+<article class="feel">
+    <h3>Đánh giá của khách hàng về Viễn Thông Việt Cường</h3>
+    <div class="one owl-carousel">
+        <div class="item">
+            <div class="item-info">
+                <p>
+                    "Sau khi đặt hàng thì trong vòng 3 ngày hàng đã giao đến tận nơi, được tư vấn lắp đặp và hướng dẫn sữ dụng một cách tốt nhất!"
+                </p>
+                <p>
+                    <b>Anh Thiên Hoan</b>
+                    Quận Tân Bình
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-info">
+                <p>
+                    "Sản phẩm chất lượng với chế độ bảo hành tốt. Cảm ơn đã được các bạn tư vấn rất nhiệt tình
+                </p>
+                <p>
+                    <b>Mr Tuấn Anh</b>
+                    Pacific Travel
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-info">
+                <p>
+                    Từ khi sử dụng quần áo và giày tại HIDO SPORT tôi cảm thấy thoải mái, tự tin hơn trong thi đấu. Tôi đã giới thiệu bạn bè mua hàng tại đây và họ cũng cảm thấy những sản phẩm của HIDO  SPORT có chất lượng rất tốt trên thị trường hiện nay mà giá cả lại phải chăng. Cám ơn và chúc cửa hàng buôn may bán đắt!
+                </p>
+                <p>
+                    <b>anh Đức Định</b>
+                    Khách hàng đã mua hàng
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-info">
+                <p>
+                    "Nhân dịp ngày sinh nhật của con tôi đã mua một bộ quần áo bóng đá tại HIDO SPORT để tặng cháu, cháu cảm thấy rất vui, ngày nào cũng đòi mẹ mặc cho đi đá bóng cùng với bạn bè. Tôi cảm thấy rất hạnh phúc với gia đình bé nhỏ của mình"
+                </p>
+                <p>
+                    <b>anh Đức Định</b>
+                    Giám Đốc công ty Ngô Nhân
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+<div class="promotion">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-12 text-center ">
+                <h3 class="heading-line text-center">Các khách hàng lớn </h3>
+            </div>
+            <div class="two owl-carousel">
+                <div class="item">
+                    <div class="item-info">
+                        <img src="~/Content/images/pro1.jpg" class="img-responsive center-block" alt="/">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-info">
+                        <img src="~/Content/images/pro2.jpg" class="img-responsive center-block" alt="/">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-info">
+                        <img src="~/Content/images/pro3.jpg" class="img-responsive center-block" alt="/">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-info">
+                        <img src="~/Content/images/pro4.jpg" class="img-responsive center-block" alt="/">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-info">
+                        <img src="~/Content/images/pro5.jpg" class="img-responsive center-block" alt="/">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-info">
+                        <img src="~/Content/images/pro6.jpg" class="img-responsive center-block" alt="/">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

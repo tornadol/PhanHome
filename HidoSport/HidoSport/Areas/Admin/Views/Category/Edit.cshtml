@@ -1,0 +1,95 @@
+﻿@using System.Web.Mvc.Html
+@using HidoSport.Areas.Admin.Helpers
+@using HidoSport.Areas.Admin.Models
+@model DataAccess.Cate
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{
+}
+@section CssInclude{
+}
+@section JsPath{
+    <script src="@(ViewBag.rsrc)js-page/category.js"></script>
+}
+@section JsInclude{
+}
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <a href="@Url.Action("Index")">Danh sách Danh mục</a>
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                Chỉnh sửa Danh Mục
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+
+    @if (Model != null)
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                @*<form class="form-horizontal" role="form" action="Edit" method="post">*@
+                @using (Html.BeginForm("Save", "Category", new { ReturnUrl = ViewBag.ReturnUrl, id = Model.Id }, FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {
+                    <div style="min-height:315px;">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trạng thái </label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="form-field-select-1" name="status">
+                                    <option value="1" @(Model.Status == 1 ? "selected" : "")>Hoạt động</option>
+                                    <option value="0" @(Model.Status == 0 ? "selected" : "")>Khóa</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên danh mục:</label>
+                            <div class="col-sm-4">
+                                <input class="input-text" type="text" name="name" placeholder="Tên danh mục" value="@Model.Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Vị trí </label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="form-field-select-1" name="sort">
+                                    <option value="1" @(Model.Sort == 1 ? "selected" : "")>1</option>
+                                    <option value="2" @(Model.Sort == 2 ? "selected" : "")>2</option>
+                                    <option value="3" @(Model.Sort == 3 ? "selected" : "")>3</option>
+                                    <option value="4" @(Model.Sort == 4 ? "selected" : "")>4</option>
+                                    <option value="5" @(Model.Sort == 5 ? "selected" : "")>5</option>
+                                    <option value="6" @(Model.Sort == 6 ? "selected" : "")>6</option>
+                                    <option value="7" @(Model.Sort == 7 ? "selected" : "")>7</option>
+                                    <option value="8" @(Model.Sort == 8 ? "selected" : "")>8</option>
+                                    <option value="9" @(Model.Sort == 9 ? "selected" : "")>9</option>
+                                    <option value="10" @(Model.Sort == 10 ? "selected" : "")>10</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button onclick="" class="btn btn-success" type="">
+                                <i class="ace-icon fa fa-pencil-square-o bigger-110"></i>
+                                Lưu
+                            </button>
+                            &nbsp; &nbsp; &nbsp;
+                            <a class="btn btn-info" type="reset" href="@Url.Action("Index")">
+                                <i class="ace-icon fa fa-reply icon-only bigger-110"></i>
+                                Quay lại
+                            </a>
+                        </div>
+                        <div class="col-md-offset-3 col-md-9 error" style="color:red;display:none">
+                            Chưa nhập đủ thông tin
+                        </div>
+                    </div>
+                }
+                @*</form>*@
+            </div>
+        </div>
+    }
+</div>

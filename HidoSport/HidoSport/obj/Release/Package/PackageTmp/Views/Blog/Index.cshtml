@@ -1,0 +1,262 @@
+﻿@using System.Configuration
+@using HidoSport.Helpers
+@{
+    ViewBag.Title = "Chuyên cung cấp mặt hàng viễn thông";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{
+    <style>
+         @Html.Raw(ViewHelper.GetCss("css/home", false))
+    </style>
+}
+@section JsPath{
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <script type="text/javascript" src="~/scripts/home@(ConfigurationManager.AppSettings["Minify"]).mobile.js" defer></script>
+    }
+    else
+    {
+        <script type="text/javascript" src="~/scripts/home@(ConfigurationManager.AppSettings["Minify"]).js" defer></script>
+    }
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <h3>Các bài viết về sản phẩm</h3>
+            <ul class="newslist" id="mainlist">
+                <li data-id="957917">
+                    <a href="/tin-tuc/sau-tat-ca-lg-g4-va-v10-van-se-len-doi-android-7-0-957917">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn2.tgdd.vn/Files/2017/03/06/957917/lg_800x450-300x200.jpg" class="lazy" src="https://cdn2.tgdd.vn/Files/2017/03/06/957917/lg_800x450-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            Sau tất cả, LG G4 và V10 vẫn sẽ lên đời Android 7.0
+
+                        </h3>
+                        <figure>
+                            Tưởng chừng siêu phẩm một thời LG G4 và LG V10 sẽ dừng chân ở phiên bản Adroid 6.0 Marshmallow, nhưng mới đây có một tin vui dành cho người dùng...
+                        </figure>
+                        <div class="timepost">
+                            <span>1 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957906">
+                    <a href="/tin-tuc/galaxy-s8-mau-trang-lo-anh-thuc-te-dang-hoat-dong-957906">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn1.tgdd.vn/Files/2017/03/06/957906/samsung-galaxy-s8-leak-1_800x452-300x200.jpg" class="lazy" src="https://cdn1.tgdd.vn/Files/2017/03/06/957906/samsung-galaxy-s8-leak-1_800x452-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            Galaxy S8 màu trắng lộ ảnh thực tế đang hoạt động
+
+                        </h3>
+                        <figure>
+                            Thêm một lần nữa những hình ảnh thực tế của Galaxy S8 đã xuất hiện và lần này điểm đặc biệt đó là phiên bản có màu trắng sữa.&nbsp;Hình ảnh được chia...
+                        </figure>
+                        <div class="timepost">
+                            <span>2 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957905">
+                    <a href="/tin-tuc/sieu-pham-man-hinh-4k-xperia-xz-premium-se-len-ke-muon-957905">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn.tgdd.vn/Files/2017/03/06/957905/xperia-xz-premium-3-1440x1080_1280x720_1280x720_800x450-300x200.jpg" class="lazy" src="https://cdn.tgdd.vn/Files/2017/03/06/957905/xperia-xz-premium-3-1440x1080_1280x720_1280x720_800x450-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            Siêu phẩm màn hình 4K Xperia XZ Premium sẽ lên kệ muộn, sau cả Galaxy S8
+
+                        </h3>
+                        <figure>
+                            Vài ngày trước từng có thông tin cho biết chiếc smartphone Sony Xperia XZ Premium có thể sẽ lên kệ vào cuối tháng 3 này, nhưng có vẻ chúng ta sẽ...
+                        </figure>
+                        <div class="timepost">
+                            <span>2 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957882">
+                    <a href="/tin-tuc/diem-tin-hot-6-3-16-tin-don-sieu-pham-galaxy-s8-957882">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn2.tgdd.vn/Files/2017/03/06/957882/bannernew4-_1920x1080_1300x731-300x200.jpg" class="lazy" src="https://cdn2.tgdd.vn/Files/2017/03/06/957882/bannernew4-_1920x1080_1300x731-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            Điểm tin HOT 6/3: 16 tin đồn siêu phẩm Galaxy S8, Galaxy J5 Prime sắp giảm giá
+
+                        </h3>
+                        <figure>
+                            Nhân dịp 8/3 chiếc smartphone Galaxy J5 Prime chuẩn bị giảm giá hấp dẫn là một món quà rất đáng để dành tặng cho chị em, ngoài ra thông tin tổng...
+                        </figure>
+                        <div class="timepost">
+                            <span>2 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957887">
+                    <a href="/tin-tuc/apple-trang-bi-man-hinh-oled-cho-toan-bo-iphone-nam-2019-957887">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn2.tgdd.vn/Files/2017/03/06/957887/iphone8_800x451-300x200.jpg" class="lazy" src="https://cdn2.tgdd.vn/Files/2017/03/06/957887/iphone8_800x451-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            Apple có kế hoạch trang bị màn hình OLED cho toàn bộ iPhone năm 2019
+
+                        </h3>
+                        <figure>
+                            Trong năm nay tất cả các báo cáo đều cho rằng chỉ có một mẫu iPhone 8 là trang bị màn hình OLED, trong khi 2 phiên bản còn lại vẫn dùng màn hình...
+                        </figure>
+                        <div class="timepost">
+                            <span>2 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957549">
+                    <a href="/tin-tuc/3-game-nhap-vai-moi-ra-mat-tren-android-ios-ban-dung-bo-lo-957549">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn4.tgdd.vn/Files/2017/03/05/957549/goddess-kiss_800x450-300x200.jpg" class="lazy" src="https://cdn4.tgdd.vn/Files/2017/03/05/957549/goddess-kiss_800x450-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            3 game nhập vai mới ra mắt trên Android và iOS, bạn đừng bỏ lỡ
+
+                        </h3>
+                        <figure>
+                            Game nhập vai (Role-Playing game) là thể loại game mà người chơi sẽ hóa thân vào một nhân vật trong thế giới ảo, có khả năng nâng cấp bản thân và...
+                        </figure>
+                        <div class="timepost">
+                            <span>3 giờ trước</span>
+
+                            <span class="namecate">Thị trường</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957850">
+                    <a href="/tin-tuc/3-meo-cuc-hay-giup-nang-trai-nghiem-xem-youtube-len-tam-cao-moi-957850">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn.tgdd.vn/Files/2017/03/06/957850/youtube-wallpaper6_1279x737-300x200.jpg" class="lazy" src="https://cdn.tgdd.vn/Files/2017/03/06/957850/youtube-wallpaper6_1279x737-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            3 mẹo cực hay giúp nâng trải nghiệm xem Youtube lên tầm cao mới
+
+                        </h3>
+                        <figure>
+                            Youtube là mạng xã hội video lớn và phổ biến nhất hiện nay, bạn có thể tìm kiếm bất kỳ thứ gì mình muốn tại đây. Và để có những trải nghiệm tốt...
+                        </figure>
+                        <div class="timepost">
+                            <span>3 giờ trước</span>
+
+                            <span class="namecate">Mẹo hay</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957834">
+                    <a href="/tin-tuc/thiet-ke-smartphone-tam-trung-dang-dan-tiem-can-voi-cao-cap-957834">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn4.tgdd.vn/Files/2017/03/06/957834/dscf8873_1280x720_1280x720-300x200.jpg" class="lazy" src="https://cdn4.tgdd.vn/Files/2017/03/06/957834/dscf8873_1280x720_1280x720-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            Thiết kế smartphone tầm trung đang dần tiệm cận với cao cấp
+                            <span class="lesscom">
+                                <i class="iconnews-comcya"></i>8
+                            </span>
+
+                        </h3>
+                        <figure>
+                            Để cạnh tranh tốt ở phân khúc tầm trung, không ít nhà sản xuất đã đưa nhiều tính năng cao cấp của các flagship xuống thế hệ smartphone tầm trung...
+                        </figure>
+                        <div class="timepost">
+                            <span>3 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957869">
+                    <a href="/tin-tuc/video-kham-pha-phan-cung-ben-trong-infinix-zero-4-957869">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn4.tgdd.vn/Files/2017/03/06/957869/c5gqv_1024x578-300x200.jpg" class="lazy" src="https://cdn4.tgdd.vn/Files/2017/03/06/957869/c5gqv_1024x578-300x200.jpg" style="display: block;">
+                        </div>
+                        <h3>
+                            [Video] Khám phá phần cứng bên trong Infinix Zero 4
+
+                        </h3>
+                        <figure>
+                            Infinix vừa ra mắt mẫu smartphone mới nhất của hãng tại thị trường Việt Nam là Zero 4 với thiết kế kim loại nguyên khối cứng cáp, sang trọng....
+                        </figure>
+                        <div class="timepost">
+                            <span>3 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+                <li data-id="957874">
+                    <a href="/tin-tuc/samsung-chuan-bi-12-trieu-chiec-galaxy-s8-cho-lan-dau-tien-957874">
+                        <div class="tempvideo">
+                            <img width="100" height="70" data-original="https://cdn4.tgdd.vn/Files/2017/03/06/957874/samsung-galaxy-s8-1_800x450-300x200.jpg" class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX6+vqsEtnpAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==">
+                        </div>
+                        <h3>
+                            Samsung chuẩn bị 12 triệu chiếc Galaxy S8 cho lần đầu tiên lên kệ
+
+                        </h3>
+                        <figure>
+                            Dự kiến với sự thay đổi toàn diện trong thiết kế, cấu hình được nâng cấp cực mạnh thì bộ đôi Galaxy S8 và S8 Plus sẽ giúp Samsung có một năm thành...
+                        </figure>
+                        <div class="timepost">
+                            <span>3 giờ trước</span>
+
+                            <span class="namecate">Tin nhanh 24/7</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <h3>Sản phẩm mới</h3>
+            <ul class="newsproduct">
+                <li>
+                    <a href="/tin-tuc/san-pham/samsung-galaxy-s8-78479">
+                        <img width="100" height="70" data-original="https://cdn4.tgdd.vn/Products/Images/42/78479/samsung-galaxy-s8-1-200x200.jpg" src="https://cdn4.tgdd.vn/Products/Images/42/78479/samsung-galaxy-s8-1-200x200.jpg" class="lazy" style="display: block;">
+                        <h3>Samsung Galaxy S8</h3>
+                        <p> Tin đồn</p>
+                        <label>180 bài viết</label>
+                    </a>
+                </li>
+                <li>
+                    <a href="/tin-tuc/san-pham/lg-g6-75732">
+                        <img width="100" height="70" data-original="https://cdn2.tgdd.vn/Products/Images/42/75732/lg-g6-5-200x200.jpg" src="https://cdn2.tgdd.vn/Products/Images/42/75732/lg-g6-5-200x200.jpg" class="lazy" style="display: block;">
+                        <h3>LG G6</h3>
+                        <p> Mới ra mắt</p>
+                        <label>74 bài viết</label>
+                    </a>
+                </li>
+                <li>
+                    <a href="/tin-tuc/san-pham/galaxy-j5-prime-86689">
+                        <img width="100" height="70" data-original="https://cdn4.tgdd.vn/Products/Images/42/86689/samsung-galaxy-j5-prime-1-200x200.jpg" src="https://cdn4.tgdd.vn/Products/Images/42/86689/samsung-galaxy-j5-prime-1-200x200.jpg" class="lazy" style="display: block;">
+                        <h3>Galaxy J5 Prime</h3>
+                        <p>4.990.000₫</p>
+                        <label>36 bài viết</label>
+                    </a>
+                </li>
+                <li>
+                    <a href="/tin-tuc/san-pham/oppo-f1s-81592">
+                        <img width="100" height="70" data-original="https://cdn2.tgdd.vn/Products/Images/42/81592/oppo-f1s-7-200x200.jpg" src="https://cdn2.tgdd.vn/Products/Images/42/81592/oppo-f1s-7-200x200.jpg" class="lazy" style="display: block;">
+                        <h3>OPPO F1s</h3>
+                        <p>5.990.000₫</p>
+                        <label>71 bài viết</label>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

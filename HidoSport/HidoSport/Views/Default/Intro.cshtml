@@ -1,0 +1,235 @@
+﻿@using HidoSport.Helpers
+@{
+    ViewBag.Title = "Chính sách giao hàng quần áo đá banh, HidoSport hân hạnh phục vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{
+    <style>
+        @Html.Raw(ViewHelper.GetCss("css/intro",false))
+    </style>
+}
+@section JsPath{
+    <script type="text/javascript" src="~/scripts/home.js" async defer></script>
+}
+@*<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 wow fadeInLeft">
+            <h3 class="heading-line">
+                Giới thiệu về chúng tôi
+            </h3>
+            <div class="form-group">
+                <div class="text-intro">
+                    <div class="col-sm-12">
+                        <p>
+                            <b>HIDO SPORT</b> thành lập từ đầu năm 2007, được kế thừa từ cơ sở may quần áo bóng đá gia công cho các đơn vị kinh doanh đồ thể thao, quần áo bóng đá tại khu vực TPHCM.
+                        </p>
+                        <p>
+                            Mặc dù bước đầu còn gặp nhiều khó khăn trong việc tiếp cận khách hàng, nhưng với tâm huyết của chúng tôi thì shop đã và đang được nhiều người tin tưởng tìm đến và đặt mua.
+                        </p>
+                        <p>
+                            Bằng những kinh nghiệm lâu năm trong ngành may mặc, chúng tôi tự hào mang đến cho Quý khách hàng những bộ trang phục thể thao đẹp mắt và chất lượng cao.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 wow fadeInRight">
+            <h3 class="heading-line">
+                Địa chỉ 
+            </h3>
+            
+            <div class="col-sm-12">
+                <div class="b-map">
+                    <iframe style="width:100%; height:300px; border:none;" src="https://www.google.com/maps/embed/v1/search?q=319-B5%2C%20L%C3%BD%20Th%C6%B0%E1%BB%9Dng%20Ki%E1%BB%87t%2C%20ph%C6%B0%E1%BB%9Dng%2015%2C%20S%C3%A0i%20G%C3%B2n%2C%20Qu%E1%BA%ADn%2011%2C%20Ho%20Chi%20Minh%2C%20Vietnam&key=AIzaSyCvvnoZsUukTgRfjmNMFZjh1HKW8hpV1Uo" allowfullscreen></iframe>
+                </div>
+                <div class="b-contact-info">
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="info-title"><i class="fa fa-map-marker"></i>Địa chỉ</span>
+                            <span class="info-text">319 B5 LÝ THƯỜNG KIỆT, PHƯỜNG 15, QUẬN 11, TPHCM <br>(ĐỐI DIỆN CÂY XĂNG PETROLIMEX NGÃ 3 BẮC HẢI LÝ THƯỜNG KIỆT)</span>
+                        </li>
+                        <li>
+                            <span class="info-title"><i class="fa fa-phone"></i>Điện thoại</span>
+                            <span class="info-text"> 0981677939 (Zalo, Viber, Facebook)</span>
+                        </li>
+                        <li>
+                            <span class="info-title"><i class="fa fa-envelope-o"></i>email</span>
+                            <span class="info-text">hdspprt.hcm@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="bao-hanh">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 wow fadeInLeft">
+            <h3 class="heading-line">
+                TẠI SAO BẠN NÊN CHỌN HIDO SPORT?﻿
+            </h3>
+            <div class="form-group">
+                <div class="text-intro">
+                    <div class="col-sm-12">
+                        <p>
+                            Đặt hàng, in ấn lấy nhanh.
+                        </p>
+                        <p>
+                            Hàng Việt Nam chất lượng cao, mẫu mã đa dạng nhiều sự lựa chọn.
+                        </p>
+                        <p>
+                            Được xem hàng tận nơi trước khi đặt mua hàng.
+                        </p>
+                        <p>
+                            Cam kết đổi trả hoặc hoàn lại tiền trong vòng 03 ngày nếu hàng không đúng chất lượng và mẫu mã theo yêu cầu.
+                        </p>
+                        <p>
+                            ​Bảo hành 01 năm đối với quần áo bóng đá bị sứt chỉ, phai màu nều do lỗi kỹ thuật của Shop.
+                        </p>
+                        <p>
+                            ​Với kinh nghiệm lâu năm trong nghề, chúng tôi luôn lắng nghe và làm thỏa mãn yêu cầu của Quý khách hàng, hãy nhấc máy lên và ALO để chúng tôi phục vụ bạn! 24/7
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 wow fadeInRight">
+            <h3 class="heading-line">
+                CHÍNH SÁCH GIAO HÀNG QUẦN ÁO BÓNG ĐÁ
+            </h3>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>Phục vụ 24/7, giao hàng tận nơi, nhanh chóng.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="giao-hang">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 wow fadeInLeft">
+            <h3 class="heading-line">
+                CHÍNH SÁCH GIAO HÀNG QUẦN ÁO BÓNG ĐÁ
+            </h3>
+            <div class="form-group">
+                <div class="text-intro">
+                    <div class="col-sm-12">
+                        <p>
+                            Phục vụ 24/7, giao hàng tận nơi, nhanh chóng.
+                        </p>
+                        <p>
+                            Giao hàng trong vòng 01 đến 03 ngày từ khi nhận được đơn đặt quần áo bóng đá đối với hàng có sẵn.
+                        </p>
+                        <p>
+                            Đặt may quần áo bóng đá theo yêu cầu thời gian giao hàng từ 5 đến 15 ngày tùy vào từng thời điểm.
+                        </p>
+                        <p>
+                            Phí giao hàng sẽ được tính như sau:
+                        </p>
+                        <p>
+                            + <b>TẠI TPHCM</b>: Miễn phí giao hàng các Quận nội thành. Các Quận ngoại thành phí giao hàng sẽ dao động từ 10.000đ ĐẾN 30.000đ tùy vào khoảng cách.
+                        </p>
+                        <p>
+                            + <b>TỈNH THÀNH</b>: Phí giao hàng tính theo giá của Chành Xe hoặc đơn vị chuyển phát nhanh khác
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 wow fadeInRight">
+            <img src="~/Content/images/delivery.png"/>
+        </div>
+    </div>
+</div>
+<article class="feel">
+    <h3>Cảm nhận của khách hàng đã mua hàng tại HidoSport</h3>
+    <div class="one owl-carousel">
+        <div class="item">
+            <div class="item-info">
+                <img class="lazyOwl" alt="" width="180" height="180" data-src="/Content/images/custom1.jpg">
+                <p>
+                    "Sau khi đặt hàng thì trong vòng 3 ngày hàng đã giao từ TPHCM đến Đà Lạt, Mặc dù chưa đến trực tiếp xem hàng nhưng SHOP giao hàng rất uy tín về mẫu mà, chất lượng và thời gian đã cam kết. Cám ơn HIDO SPORT rất nhiều!"
+                </p>
+                <p>
+                    <b>Mr Thiên Hoan</b>
+                    Đại Học Đà Lạt
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-info">
+                <img class="lazyOwl" alt="" width="180" height="180" data-src="/Content/images/custom2.jpg">
+                <p>
+                    "Sản phẩm chất lượng với chế độ bảo hành tốt. Cảm ơn đã được các bạn tư vấn rất nhiệt tình
+                </p>
+                <p>
+                    <b>Mr Tuấn Anh</b>
+                    Pacific Travel
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-info">
+                <img class="lazyOwl" alt="" width="180" height="180" data-src="/Content/images/custom3.jpg">
+                <p>
+                    Từ khi sử dụng quần áo và giày tại HIDO SPORT tôi cảm thấy thoải mái, tự tin hơn trong thi đấu. Tôi đã giới thiệu bạn bè mua hàng tại đây và họ cũng cảm thấy những sản phẩm của HIDO  SPORT có chất lượng rất tốt trên thị trường hiện nay mà giá cả lại phải chăng. Cám ơn và chúc cửa hàng buôn may bán đắt!
+                </p>
+                <p>
+                    <b>anh Đức Định</b>
+                    Khách hàng đã mua hàng
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-info">
+                <img class="lazyOwl" alt="" width="180" height="180" data-src="/Content/images/custom4.jpg">
+                <p>
+                    "Nhân dịp ngày sinh nhật của con tôi đã mua một bộ quần áo bóng đá tại HIDO SPORT để tặng cháu, cháu cảm thấy rất vui, ngày nào cũng đòi mẹ mặc cho đi đá bóng cùng với bạn bè. Tôi cảm thấy rất hạnh phúc với gia đình bé nhỏ của mình"
+                </p>
+                <p>
+                    <b>anh Đức Định</b>
+                    Giám Đốc công ty Ngô Nhân
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+<div class="container">
+    <div class="row promotion">
+        <div class="col-sm-12 text-center ">
+            <h3 class="heading-line text-center">Các khách hàng lớn </h3>
+        </div>
+        <div class="two owl-carousel">
+            <div class="item">
+                <div class="item-info">
+                    <img src="~/Content/images/pro1.jpg" class="img-responsive center-block" alt="/">
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <img src="~/Content/images/pro2.jpg" class="img-responsive center-block" alt="/">
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <img src="~/Content/images/pro3.jpg" class="img-responsive center-block" alt="/">
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <img src="~/Content/images/pro4.jpg" class="img-responsive center-block" alt="/">
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <img src="~/Content/images/pro5.jpg" class="img-responsive center-block" alt="/">
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-info">
+                    <img src="~/Content/images/pro6.jpg" class="img-responsive center-block" alt="/">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@

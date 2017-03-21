@@ -1,0 +1,129 @@
+﻿@using HidoSport.Areas.Admin.Helpers
+@using HidoSport.Helpers
+@using HidoSport.Areas.Admin.Models
+@model DetailCustomer
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section CssPath{}
+@section CssInclude{}
+@section JsPath{}
+@section JsInclude{
+    <script src="@(ViewBag.rsrc)js-page/customer.js"></script>
+}
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <a href="@Url.Action("Index")">Danh sách khách hàng</a>
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                Chi tiết Danh Mục
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+
+    <div class="row admin-edit">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <form class="form-horizontal" role="form">
+                <div style="min-height:315px;">
+                    <div class="form-group">
+                        <div class="col-sm-5" style="padding-left:20%">
+                            Tên khách hàng
+                        </div>
+                        <div class="col-sm-7 edit-detail">
+                            @Model.Cus.Name
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5" style="padding-left:20%">
+                            Số điện thoại
+                        </div>
+                        <div class="col-sm-7 edit-detail">
+                            @Model.Cus.Phone
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5" style="padding-left:20%">
+                            Địa chỉ
+                        </div>
+                        <div class="col-sm-7 edit-detail">
+                            @Model.Cus.Adress
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5" style="padding-left:20%">
+                            Email
+                        </div>
+                        <div class="col-sm-7 edit-detail">
+                            @Model.Cus.Email
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5" style="padding-left:20%">
+                            Trạng thái:
+                        </div>
+                        <div class="col-sm-7" style="">
+                            @StatusHelper.ConverStatusCus(Model.Cus.Status)
+                        </div>
+                    </div>
+                    @foreach (var i in Model.Cusbuy)
+                    {
+                        <div class="widget-box">
+                            <div class="widget-header">
+                                <a href="/san-pham/@Extension.ToURL(@i.NameProduct)" class="widget-title">@i.NameProduct</a>
+                            </div>
+
+                            <div class="widget-body" style="overflow:hidden">
+                                <div class="widget-main">
+                                    <div class="col-sm-4" style="padding-left:20%">
+                                        Giá bán : @i.PriceProduct
+                                    </div>
+                                    <div class="col-sm-4" style="padding-left:20%">
+                                        Số lương : @i.Quantity
+                                    </div>
+                                    <div class="col-sm-4" style="padding-left:20%">
+                                        Size : @i.Size
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-6"></div>
+                    }
+                    <div class="form-group">
+                        <div class="col-sm-5" style="padding-left:20%">
+                            Ngày khởi tạo:
+                        </div>
+                        <div class="col-sm-7 edit-detail">
+                            @Model.Cus.Create_Day
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5" style="padding-left:20%">
+                            Ngày thay đổi cuối:
+                        </div>
+                        <div class="col-sm-7 edit-detail">
+                            @Model.Cus.Change_Day
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <a class="btn btn-success" type="button" href="@Url.Action("Edit",new { id =Model.Cus.Id})">
+                            <i class="ace-icon fa fa-pencil-square-o bigger-110"></i>
+                            Sửa
+                        </a>
+                        &nbsp; &nbsp; &nbsp;
+                        <a class="btn btn-danger" type="reset" href="@Url.Action("Delete",new { id =Model.Cus.Id})">
+                            <i class="ace-icon fa fa-trash-o bigger-110"></i>
+                            Xóa
+                        </a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

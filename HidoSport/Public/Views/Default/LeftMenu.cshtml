@@ -1,0 +1,50 @@
+﻿@using HidoSport.Helpers
+@model List<HidoSport.Models.LeftMenu>
+@{
+    ViewBag.Title = "LeftMenu";
+}
+<div class="col-sm-3 left-menu">
+    <div class="ps-tittle">
+        <div class="col-xs-2 col-sm-2 col-md-3 text-center pts-l1">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </div>
+        <div class="col-xs-9 pst-l2">
+            <span>SẢN PHẨM</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <ul class="panel panel-rank multi-level" role="menu" aria-labelledby="dropdownMenu">
+                    @foreach (var cate in Model)
+                    {
+                        if (cate.CateChild == null || cate.CateChild.Count == 0)
+                        {
+                            <li>
+                                <a href="/@Extension.ToURL(cate.Cate.Name)">@cate.Cate.Name</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="dropdown-submenu">
+                                <span class="glyphicon glyphicon-chevron-right pull-right" aria-hidden="true"></span>
+                                <a href="/@Extension.ToURL(cate.Cate.Name)">@cate.Cate.Name</a>
+                                <ul class="dropdown-menu">
+                                    @foreach (var catechild in cate.CateChild)
+                                    {
+                                        <li>
+                                            <a tabindex="-1" href="/@Extension.ToURL(cate.Cate.Name)/@Extension.ToURL(catechild.Name)">@catechild.Name</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
