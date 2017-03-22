@@ -1,7 +1,7 @@
 $(function(){
-	$('.dropdown').hover(function(){
-		$(this).find('.subcate').css({"display":"block"});
-	}, function(){
-		$(this).find('.subcate').css({"display":"none"});
+	$(".regular").slick({
+	    infinite: true,
+	    slidesToShow: 1,
+	    slidesToScroll: 1
 	});
 })

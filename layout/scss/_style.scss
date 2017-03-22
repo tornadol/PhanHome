@@ -10,3 +10,97 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a,
 a:hover{
 	text-decoration: none;
 }
+.vcenter{
+	display: inline-block;
+	vertical-align: middle;
+	float:none;
+}
+body{
+	background:#f1f1f1;
+}
+
+.homenews{
+	
+}
+.homenews figure {
+    display: block;
+    overflow: hidden;
+    border-bottom: 3px solid #1064b3;
+    background: #f0f0f0;
+}
+.homenews h2 {
+    float: left;
+    padding: 0px 11px 5px;
+    background: #4a90e2;
+    text-transform: uppercase;
+    text-align: center;
+}
+.homenews h2 a {
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+}
+.homenews figure b {
+    float: left;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 38px solid #1064b3;
+}
+.homenews figure .readmore {
+    float: right;
+    padding: 3px 10px;
+    background: #fff;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    font-size: 12px;
+    color: #288ad8;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+.homenews ul {
+    display: block;
+    overflow: hidden;
+    background: #fff;
+}
+.homenews li {
+    display: block;
+    border-bottom: 1px solid #ededed;
+    background: #fff;
+    margin: 0 10px;
+    padding: 8px 0;
+}
+.homenews li a {
+    display: block;
+    overflow: hidden;
+}
+.homenews li h3 {
+    display: block;
+    overflow: hidden;
+    height: 36px;
+    line-height: 1.3em;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+.view-more{
+	padding: 10px;
+    text-align: center;
+    color: #f26843;
+    font-weight: bold;
+    cursor:pointer;
+}
+.homenews .send{
+	background: #4a90e2;
+    color: #fff;
+    display: inline-block;
+    padding: 7px 18px;
+    border-radius: 5px;
+    text-align: right;
+    cursor: pointer;
+}
+.info-user{
+	padding:15px;
+}

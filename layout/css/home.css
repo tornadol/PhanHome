@@ -10,15 +10,120 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a,
 a:hover {
   text-decoration: none; }
 
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
+
+body {
+  background: #f1f1f1; }
+
+.homenews figure {
+  display: block;
+  overflow: hidden;
+  border-bottom: 3px solid #1064b3;
+  background: #f0f0f0; }
+
+.homenews h2 {
+  float: left;
+  padding: 0px 11px 5px;
+  background: #4a90e2;
+  text-transform: uppercase;
+  text-align: center; }
+
+.homenews h2 a {
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold; }
+
+.homenews figure b {
+  float: left;
+  width: 0;
+  height: 0;
+  border-left: 0 solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 38px solid #1064b3; }
+
+.homenews figure .readmore {
+  float: right;
+  padding: 3px 10px;
+  background: #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  font-size: 12px;
+  color: #288ad8;
+  text-transform: uppercase;
+  margin-top: 8px; }
+
+.homenews ul {
+  display: block;
+  overflow: hidden;
+  background: #fff; }
+
+.homenews li {
+  display: block;
+  border-bottom: 1px solid #ededed;
+  background: #fff;
+  margin: 0 10px;
+  padding: 8px 0; }
+
+.homenews li a {
+  display: block;
+  overflow: hidden; }
+
+.homenews li h3 {
+  display: block;
+  overflow: hidden;
+  height: 36px;
+  line-height: 1.3em;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px; }
+
+.view-more {
+  padding: 10px;
+  text-align: center;
+  color: #f26843;
+  font-weight: bold;
+  cursor: pointer; }
+
+.homenews .send {
+  background: #4a90e2;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 18px;
+  border-radius: 5px;
+  text-align: right;
+  cursor: pointer; }
+
+.info-user {
+  padding: 15px; }
+
+/*Header*/
 header .bar {
   padding: 10px 0; }
-header .bar-righttext {
-  float: right; }
-  header .bar-righttext h1 {
-    font-size: 15px;
-    color: #42b652;
-    /* font-weight: bold; */
+header .bar-righttext h1 {
+  font-size: 15px;
+  color: #42b652;
+  /* font-weight: bold; */
+  font-style: italic; }
+header .search {
+  text-align: right; }
+  header .search input {
+    border: 0;
+    border-bottom: 1px solid #47a1dd;
+    outline: 0;
+    background: transparent;
+    color: #c3c3c3;
     font-style: italic; }
+  header .search input:focus {
+    border: 0;
+    border-bottom: 1px solid #47a1dd; }
+header .search img {
+  width: 30px;
+  position: absolute;
+  top: -4px; }
 
 nav {
   display: block;
@@ -60,6 +165,7 @@ nav li .subcate {
   overflow: hidden;
   position: absolute;
   top: 43px;
+  z-index: 10;
   width: 300px;
   background: #fff;
   padding: 10px;
@@ -81,3 +187,86 @@ nav li aside a {
   padding: 2px 0 !important;
   font-weight: normal;
   line-height: 20px; }
+
+/*End Header*/
+/*Footer*/
+footer {
+  background: #fff;
+  padding: 30px; }
+  footer h3 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    color: #4a90e2; }
+  footer ul li {
+    font-size: 14px;
+    line-height: 26px;
+    color: gray;
+    font-weight: bold; }
+
+/*Home*/
+.banner {
+  padding-top: 10px; }
+  .banner .left-banner img {
+    width: 100%; }
+  .banner .left-banner img:nth-child(2) {
+    padding-top: 5px; }
+  .banner .slide-banner {
+    padding: 0; }
+
+.navcate {
+  display: block;
+  overflow: hidden;
+  padding: 0 10px;
+  background: #fff; }
+
+.navcate h1, .navcate h2, .navcate h3 {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 15px;
+  color: #333;
+  text-transform: uppercase;
+  border-bottom: 2px solid #4a90e2;
+  font-size: 14px;
+  color: #4a90e2;
+  font-weight: 600; }
+
+.navcate a {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  color: #4a90e2;
+  padding: 10px; }
+
+.box-product {
+  margin: 20px 0;
+  background: #fff; }
+
+.product {
+  padding: 10px 10px 50px 10px; }
+  .product h3 {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .product span {
+    display: block;
+    color: #444;
+    font-size: 16px; }
+    .product span b {
+      color: #e81234; }
+  .product .address {
+    color: #1064b3;
+    font-weight: bold; }
+
+.product img {
+  width: 100%; }
+
+.add-info {
+  margin: 20px 0;
+  background: #fff; }
+
+/*End Home*/
